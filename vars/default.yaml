@@ -1,0 +1,6 @@
+country: US
+state: Texas
+city: San Antonio
+organization: personal
+name: ${ansible_fqdn}
+bitlbee_ssl: /etc/ssl/private/bitlbee.crt
