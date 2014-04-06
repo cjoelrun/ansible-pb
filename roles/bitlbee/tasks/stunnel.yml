@@ -11,11 +11,11 @@
 - name: Create stunnel config directory
   file: path=/etc/stunnel state=directory owner=root group=root mode=0700
 
-- name: create self-signed certificate for ${ansible_fqdn}
-  command: openssl req -x509 -nodes -subj "/C={{ country }}US/ST={{ state }}/L={{ city }}/O={{ organization }}/CN={{ ansible_fqdn }}" -days 36500 -newkey rsa:4096 -keyout $bitlbee_ssl -out $bitlbee_ssl creates=$bitlbee_ssl
+- name: create self-signed certificate for {{ ansible_fqdn }}
+  command: openssl req -new -newkey rsa:4096 -days 36500 -nodes -x509 -subj "/C={{ country }}/ST={{ state }}/L={{ city }}/O={{ organization }}/CN={{ ansible_fqdn }}" -keyout {{ bitlbee_ssl }} -out {{ bitlbee_ssl }} creates={{ bitlbee_ssl }}
 
 - name: bitlbee stunnel config
-  template: src=templates/bitlbee-stunnel.j2 dest=/etc/stunnel/bitlbee.conf owner=root group=root mode=0600
+  template: src=bitlbee-stunnel.j2 dest=/etc/stunnel/bitlbee.conf owner=root group=root mode=0600
   notify: restart stunnel
 
 - name: Run stunnel service

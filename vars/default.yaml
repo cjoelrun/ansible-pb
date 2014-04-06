@@ -1,6 +1,9 @@
+bitlbee_ssl: /etc/ssl/private/bitlbee.crt
+port: 6698
+bitlbee_port: 6667
+bitlbee_version: 3.2.1
 country: US
 state: Texas
 city: San Antonio
 organization: personal
-name: ${ansible_fqdn}
-bitlbee_ssl: /etc/ssl/private/bitlbee.crt
+name: "{{ ansible_fqdn }}"

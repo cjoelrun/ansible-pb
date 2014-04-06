@@ -1,6 +1,9 @@
 ---
 - hosts: all
   gather_facts: True
+  vars_prompt:
+    bitlbee_pass: "Enter the bitlbee server access password"
+    bitlbee_oper_pass: "Enter the bitlbee operator password"
   vars_files:
     - vars/default.yaml
   roles:

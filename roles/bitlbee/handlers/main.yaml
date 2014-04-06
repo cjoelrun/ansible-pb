@@ -1,2 +1,5 @@
+- name: restart bitlbee
+  service: name=bitlbee state=restarted
+
 - name: restart stunnel
   service: name=stunnel4 state=restarted
